@@ -1,9 +1,5 @@
 ﻿// Задача: написать программу, которая из имеющегося массива строк формирует массив из строк длина которых меньше или равна 3 символа.
 
-Console.WriteLine("Имеется массив строк:");
-//string[] stringArray = { "hello", "2", "world", ":-)" };
-string[] stringArray = {"1234", "1567", "-2", "computer science"};
-//string[] stringArray = {"Russia", "Denmark", "Kazan"};
 void PrintArrayString(string[] array)
 {
     int arrSize = array.Length;
@@ -28,9 +24,16 @@ string[] FindStringLess3Chars(string[] array, int numberChars)
     }
     return res;
 }
+Console.Clear();
+Console.WriteLine("Имеется массив строк:");
+// Строки из примера
+string[] startArray = { "hello", "2", "world", ":-)" };
+// string[] startArray = { "1234", "1567", "-2", "computer science" };
+// string[] startArray = {"Russia", "Denmark", "Kazan"};
 
-string[] resultArray = FindStringLess3Chars(stringArray, 3);
+string[] resultArray = FindStringLess3Chars(startArray, 3);
 
-PrintArrayString(stringArray);
-System.Console.WriteLine();
+PrintArrayString(startArray);
+Console.WriteLine();
+Console.WriteLine("Массив из строк, длина которых меньше или равна 3 символа:");
 PrintArrayString(resultArray);
