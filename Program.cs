@@ -3,35 +3,51 @@
 void PrintArrayString(string[] array)
 {
     int arrSize = array.Length;
-    Console.Write("[");
-    for (int i = 0; i < arrSize; i++)
+    if (arrSize == 0) Console.WriteLine("[]");
+    else
     {
-        if (i < arrSize - 1 && array[i] != null) Console.Write($"{array[i]}, ");
+        Console.Write("[ ");
+        for (int i = 0; i < arrSize; i++)
+        {
+            if (i < arrSize - 1) Console.Write($"{array[i]}, ");
+        }
+        Console.Write($"{array[arrSize - 1]} ]");
     }
-    Console.Write($"{array[arrSize - 1]}]");
 }
 
-string[] FindStringLess3Chars(string[] array, int numberChars)
+int CountValidElements(string[] array, int num)
+{
+    int count = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i].Length <= num) count++;
+    }
+    return count;
+}
+
+string[] FindStringLessNChars(string[] array, int numberChars)
 {
     int length = array.Length;
-    string[] res = new string[length];
+    int counter = CountValidElements(array, numberChars);
+    string[] res = new string[counter];
+    int j = 0;
     for (int i = 0; i < length; i++)
-    {
         if (array[i].Length <= numberChars)
         {
-            res[i] = array[i];
+            res[j] = array[i];
+            j++;
         }
-    }
     return res;
 }
+
 Console.Clear();
 Console.WriteLine("Имеется массив строк:");
 // Строки из примера
 string[] startArray = { "hello", "2", "world", ":-)" };
-// string[] startArray = { "1234", "1567", "-2", "computer science" };
-// string[] startArray = {"Russia", "Denmark", "Kazan"};
+//string[] startArray = { "1234", "1567", "-2", "computer science" };
+//string[] startArray = { "Russia", "Denmark", "Kazan" };
 
-string[] resultArray = FindStringLess3Chars(startArray, 3);
+string[] resultArray = FindStringLessNChars(startArray, 3);
 
 PrintArrayString(startArray);
 Console.WriteLine();
